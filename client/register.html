@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register | CodeAlpha Store</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body data-page="register">
+    <header id="site-header"></header>
+
+    <main class="page-shell">
+      <section class="page-intro">
+        <span class="eyebrow">New Account</span>
+        <h2>Create your shopper profile</h2>
+        <p>Register once, then use the same account for cart, checkout, and order history.</p>
+      </section>
+
+      <section class="form-card" style="max-width: 640px; margin: 0 auto;">
+        <div id="register-feedback"></div>
+        <form id="register-form" class="form-grid">
+          <label class="form-label">
+            Full Name
+            <input type="text" name="name" placeholder="John Carter" required />
+          </label>
+          <label class="form-label">
+            Email Address
+            <input type="email" name="email" placeholder="you@example.com" required />
+          </label>
+          <label class="form-label">
+            Password
+            <input type="password" name="password" placeholder="Minimum 6 characters" required />
+          </label>
+          <label class="form-label">
+            Confirm Password
+            <input type="password" name="confirmPassword" placeholder="Repeat your password" required />
+          </label>
+          <div class="full-width form-actions">
+            <button class="btn btn--primary" type="submit">Create Account</button>
+            <a class="btn btn--outline" href="./login.html">Already have an account?</a>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/register.js"></script>
+  </body>
+</html>

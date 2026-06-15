@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart | CodeAlpha Store</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body data-page="cart">
+    <header id="site-header"></header>
+
+    <main class="page-shell">
+      <section class="page-intro">
+        <span class="eyebrow">Shopping Cart</span>
+        <h2>Review your selected items</h2>
+        <p>Update your cart, confirm your delivery address, and place the order when you are ready.</p>
+      </section>
+
+      <div id="cart-feedback"></div>
+
+      <div class="cart-container-layout">
+        <!-- Left: Cart Items & Shipping/Checkout Form -->
+        <div class="cart-items-column">
+          <div id="cart-items-list"></div>
+          
+          <section id="checkout-section" class="form-card hidden" style="margin-top: 1.5rem;">
+            <h2>Delivery Address</h2>
+            <p>Add a shipping address to complete your order checkout.</p>
+            <form id="checkout-form" class="form-grid">
+              <label class="form-label full-width">
+                Shipping Address
+                <textarea
+                  name="shippingAddress"
+                  rows="3"
+                  placeholder="Enter your full shipping address here..."
+                  minlength="10"
+                  maxlength="255"
+                  required
+                ></textarea>
+              </label>
+              <div class="full-width form-actions">
+                <button class="btn btn--primary" type="submit">Place Order</button>
+                <a class="btn btn--outline" href="./products.html">Continue Shopping</a>
+              </div>
+            </form>
+          </section>
+        </div>
+
+        <!-- Right: Price Details Sidebar -->
+        <aside class="cart-sidebar-column">
+          <div id="cart-price-details" class="price-details-card"></div>
+        </aside>
+      </div>
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/cart.js"></script>
+  </body>
+</html>

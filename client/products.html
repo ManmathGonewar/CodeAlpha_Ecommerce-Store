@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products | CodeAlpha Store</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body data-page="products">
+    <header id="site-header"></header>
+
+    <main class="page-shell">
+      <section class="page-intro">
+        <span class="eyebrow">Product Listing</span>
+        <h2>Browse the full catalog</h2>
+        <p>Explore products, filter by category, and add items to your cart in one click.</p>
+      </section>
+
+      <div class="toolbar">
+        <input
+          id="product-search"
+          type="search"
+          placeholder="Search by name or keyword"
+          aria-label="Search products"
+        />
+        <select id="category-filter" aria-label="Filter products by category">
+          <option value="">All categories</option>
+        </select>
+      </div>
+
+      <div id="products-feedback"></div>
+      <div id="product-grid" class="product-grid"></div>
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/products.js"></script>
+  </body>
+</html>

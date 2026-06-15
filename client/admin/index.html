@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard | CodeAlpha Store</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body data-page="admin">
+    <header id="site-header"></header>
+
+    <main class="page-shell">
+      <section class="page-intro">
+        <span class="eyebrow">Admin Dashboard</span>
+        <h2>Manage products and review customer orders</h2>
+        <p>This page includes a dedicated admin login, product CRUD form, and order overview.</p>
+      </section>
+
+      <div id="admin-feedback"></div>
+
+      <section id="admin-auth-section" class="form-card" style="max-width: 520px;">
+        <h3>Admin Login</h3>
+        <form id="admin-login-form" class="form-grid">
+          <label class="form-label full-width">
+            Admin Email
+            <input type="email" name="email" placeholder="admin@demostore.com" required />
+          </label>
+          <label class="form-label full-width">
+            Password
+            <input type="password" name="password" placeholder="Enter admin password" required />
+          </label>
+          <div class="full-width form-actions">
+            <button class="btn btn--primary" type="submit">Login as Admin</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="admin-dashboard" class="admin-layout hidden">
+        <div class="split">
+          <div class="form-card" style="flex: 1 1 560px;">
+            <h3 id="product-form-title">Add Product</h3>
+            <p>Use this form to create a new catalog item or edit an existing one.</p>
+            <form id="product-form" class="form-grid">
+              <input type="hidden" name="productId" />
+
+              <label class="form-label">
+                Product Name
+                <input type="text" name="name" required />
+              </label>
+
+              <label class="form-label">
+                Category
+                <input type="text" name="category" required />
+              </label>
+
+              <label class="form-label">
+                Price
+                <input type="number" name="price" step="0.01" min="0.01" required />
+              </label>
+
+              <label class="form-label">
+                Stock
+                <input type="number" name="stock" min="0" required />
+              </label>
+
+              <label class="form-label full-width">
+                Image URL
+                <input type="url" name="imageUrl" placeholder="https://example.com/image.jpg" />
+              </label>
+
+              <label class="form-label full-width">
+                Description
+                <textarea name="description" rows="4" required></textarea>
+              </label>
+
+              <div class="full-width form-actions">
+                <button class="btn btn--primary" type="submit">Save Product</button>
+                <button id="cancel-edit" class="btn btn--outline hidden" type="button">
+                  Cancel Edit
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <aside class="panel-card" style="flex: 1 1 300px;">
+            <h3>Demo Notes</h3>
+            <ul class="mini-list">
+              <li>All admin product actions call protected JWT routes.</li>
+              <li>Public product listing updates immediately after every change.</li>
+              <li>Orders are read-only for the demo to keep the workflow simple.</li>
+            </ul>
+          </aside>
+        </div>
+
+        <section class="table-card">
+          <div class="section-head" style="margin-top: 0;">
+            <div>
+              <span class="eyebrow">Product Manager</span>
+              <h2>Current catalog</h2>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Category</th>
+                  <th>Price</th>
+                  <th>Stock</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-products-table"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="table-card">
+          <div class="section-head" style="margin-top: 0;">
+            <div>
+              <span class="eyebrow">Orders Overview</span>
+              <h2>Recent customer orders</h2>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Customer</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                  <th>Items</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody id="admin-orders-table"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script type="module" src="../js/main.js"></script>
+    <script type="module" src="./js/admin.js"></script>
+  </body>
+</html>

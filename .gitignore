@@ -1,0 +1,5 @@
+server/node_modules
+server/.env
+server/.mariadb-data
+server/.mariadb.log
+.DS_Store

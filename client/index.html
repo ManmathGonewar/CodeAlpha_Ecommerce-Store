@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CodeAlpha Store</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body data-page="home">
+    <header id="site-header"></header>
+
+    <main class="page-shell">
+      <div class="mobile-search-section">
+        <div class="search-input-wrapper">
+          <span class="search-icon">🔍</span>
+          <input type="search" id="home-mobile-search" placeholder="Search products, brands and more..." />
+        </div>
+      </div>
+
+      <section class="hero-carousel">
+        <div class="carousel-track">
+          <!-- Slide 1 -->
+          <div class="carousel-slide active" style="background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.82), rgba(49, 46, 129, 0.72)), url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=1200&q=80');">
+            <div class="slide-content">
+              <span class="eyebrow">Big Billion Deals</span>
+              <h1>Curated products for the modern workspace</h1>
+              <p>Welcome to CodeAlpha Store, a premium destination for minimal setups. Grab up to 30% Off on select essentials!</p>
+              <a class="btn btn--primary" href="./products.html">Shop Now</a>
+            </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="carousel-slide" style="background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.82), rgba(24, 33, 43, 0.72)), url('https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1200&q=80');">
+            <div class="slide-content">
+              <span class="eyebrow">Summer Audio Fest</span>
+              <h1>Elevate Your Audio Experience</h1>
+              <p>Discover premium headphones, studio monitors, and portable speakers designed to deliver rich, high-fidelity sound.</p>
+              <a class="btn btn--primary" href="./products.html">Explore Audio</a>
+            </div>
+          </div>
+          <!-- Slide 3 -->
+          <div class="carousel-slide" style="background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.82), rgba(49, 46, 129, 0.72)), url('https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=1200&q=80');">
+            <div class="slide-content">
+              <span class="eyebrow">Exclusive Tech</span>
+              <h1>Modern Electronics & Gizmos</h1>
+              <p>Power up your everyday workflow with modern hubs, ergonomic keyboards, and sleek charging pads.</p>
+              <a class="btn btn--primary" href="./products.html">Browse Electronics</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Controls -->
+        <button class="carousel-control prev" aria-label="Previous Slide">❮</button>
+        <button class="carousel-control next" aria-label="Next Slide">❯</button>
+        
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+          <span class="indicator active" data-slide="0"></span>
+          <span class="indicator" data-slide="1"></span>
+          <span class="indicator" data-slide="2"></span>
+        </div>
+      </section>
+
+      <section class="section-head">
+        <div>
+          <span class="eyebrow">Featured Collection</span>
+          <h2>Explore our seasonal favorites</h2>
+          <p>
+            Carefully curated items that combine functional design with aesthetic excellence.
+          </p>
+        </div>
+        <a class="btn btn--outline" href="./products.html">View All</a>
+      </section>
+
+      <div id="home-feedback"></div>
+      <div class="product-shelf-container">
+        <button class="shelf-control prev" data-target="featured-products">❮</button>
+        <div id="featured-products" class="product-slider"></div>
+        <button class="shelf-control next" data-target="featured-products">❯</button>
+      </div>
+
+      <section class="section-head" style="margin-top: 3.5rem;">
+        <div>
+          <span class="eyebrow">Best Sellers</span>
+          <h2>Top trending products</h2>
+          <p>
+            Customer favorites and highly-rated premium essentials for your workspace.
+          </p>
+        </div>
+        <a class="btn btn--outline" href="./products.html">View All</a>
+      </section>
+
+      <div class="product-shelf-container">
+        <button class="shelf-control prev" data-target="bestseller-products">❮</button>
+        <div id="bestseller-products" class="product-slider"></div>
+        <button class="shelf-control next" data-target="bestseller-products">❯</button>
+      </div>
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/home.js"></script>
+  </body>
+</html>
