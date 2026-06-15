@@ -19,6 +19,13 @@ poolConfig.user = env.dbUser;
 poolConfig.password = env.dbPassword;
 poolConfig.database = env.dbName;
 
+// Automatically enable SSL for remote databases (like Aiven)
+if (env.dbHost && !env.dbHost.includes('localhost') && !env.dbHost.includes('127.0.0.1') && !env.dbSocket) {
+  poolConfig.ssl = {
+    rejectUnauthorized: false
+  };
+}
+
 export const pool = mysql.createPool(poolConfig);
 
 const databaseState = {
