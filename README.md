@@ -1,171 +1,238 @@
-# Full Stack E-commerce Store
+<p align="center">
+  <img src="client/assets/logo.jpg" alt="CodeAlpha E-Commerce Store Logo" width="160px" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
+</p>
 
-A simple internship-ready e-commerce project built with:
+<h1 align="center">🛒 CodeAlpha E-Commerce Store</h1>
 
-- Frontend: HTML, CSS, Vanilla JavaScript
-- Backend: Node.js + Express.js
-- Database: MySQL
-- Authentication: JWT + bcrypt
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a>
+  <a href="https://nodejs.org/"><img src="https://img.shields.io/badge/node-%3E%3D%2018.0.0-green.svg" alt="Node.js Version"></a>
+  <a href="https://expressjs.com/"><img src="https://img.shields.io/badge/Express-4.19.2-lightgrey.svg" alt="Express.js"></a>
+  <a href="https://www.mysql.com/"><img src="https://img.shields.io/badge/Database-MySQL%20%2F%20MariaDB-orange.svg" alt="Database"></a>
+  <a href="https://jwt.io/"><img src="https://img.shields.io/badge/Auth-JWT%20%26%20Bcrypt-red.svg" alt="Authentication"></a>
+</p>
 
-The app includes user registration and login, product listing and details, cart management, checkout, order history, and an admin dashboard for product CRUD and order viewing.
+A modern, highly optimized, and production-ready full-stack E-Commerce Web Application. This project is built using a lightweight and clean architecture: Vanilla HTML5, CSS3, and ES6+ JavaScript on the frontend, with a robust Node.js, Express, and MySQL backend.
 
-## Features
+This store includes full user checkout flows, shopping cart management, persistent order tracking, and a comprehensive administrative dashboard for catalog management.
 
-### User
+---
 
-- Register and login
-- Browse all products
-- View product details
-- Add products to cart
-- Remove products from cart
-- Place an order
-- View order history
+## 🚀 Key Features
 
-### Admin
+### 👤 Customer Experience
+* **Secure Authentication:** User sign-up and login powered by JSON Web Tokens (JWT) and Bcrypt hashing.
+* **Interactive Catalog:** Fast search, filtering, and detail viewing for store items.
+* **Stateful Shopping Cart:** Add, update, and remove products dynamically, backed by persistent database storage.
+* **Seamless Checkout:** Fully integrated shipping details submission and checkout process.
+* **Order History:** Detailed historical record of all past purchases with itemized receipts.
 
-- Admin login
-- Add product
-- Edit product
-- Delete product
-- View all orders
+### 🛡️ Administrative Dashboard
+* **Admin Authentication:** Restricted entry points ensuring only authorized users access management features.
+* **Catalog Control (CRUD):** Live options to create, read, update, and delete products with image uploading support.
+* **Order Oversight:** View all processed store orders, track payment amounts, shipping destination, and fulfillment status.
 
-## Project Structure
+---
+
+## 🛠️ Tech Stack & Architecture
+
+| Layer | Technologies Used | Description |
+| :--- | :--- | :--- |
+| **Frontend** | HTML5, CSS3, Vanilla JS (ES6+) | Modern flexbox/grid layout, CSS custom properties, asynchronous REST interactions using `fetch` API. |
+| **Backend** | Node.js, Express.js | Modular router structure, customized middleware (auth, database state, error handling, static serving). |
+| **Database** | MySQL / MariaDB | Relational storage utilizing connection pooling (`mysql2/promise`) for scaling. |
+| **Security** | JSON Web Tokens, Bcrypt | Token-based stateless authentication and secure cryptographic password hashing. |
+| **Validation** | Express Validator | Strict backend data validation and sanitization for request payloads. |
+
+---
+
+## 📂 Project Structure
 
 ```text
-client/
-├── index.html
-├── login.html
-├── register.html
-├── products.html
-├── product.html
-├── cart.html
-├── orders.html
-├── admin.html
-├── css/
-│   └── styles.css
-├── js/
-│   ├── admin.js
-│   ├── api.js
-│   ├── cart.js
-│   ├── home.js
-│   ├── login.js
-│   ├── main.js
-│   ├── orders.js
-│   ├── product.js
-│   ├── products.js
-│   ├── register.js
-│   └── ui.js
-└── assets/
-
-server/
-├── src/
-│   ├── config/
-│   ├── controllers/
-│   ├── database/
-│   ├── middleware/
-│   ├── routes/
-│   ├── services/
-│   └── utils/
-├── uploads/
-├── .env
-├── .env.example
-├── package.json
-└── server.js
+CodeAlpha_EcommerceStore/
+├── client/                      # Frontend Application (Served statically)
+│   ├── index.html               # Homepage (Product listing)
+│   ├── login.html               # Customer login portal
+│   ├── register.html            # Customer registration portal
+│   ├── products.html            # Search & category browse page
+│   ├── product.html             # Detailed product page
+│   ├── cart.html                # User cart review & checkout
+│   ├── orders.html              # Customer order history dashboard
+│   ├── admin.html               # Admin backend catalog & order list
+│   ├── css/
+│   │   └── styles.css           # Global design system, variables & animations
+│   ├── js/
+│   │   ├── admin.js             # Admin dynamic interactions
+│   │   ├── api.js               # Centralized fetch client (handles JWT headers)
+│   │   ├── cart.js              # Cart business logic
+│   │   └── ui.js                # Core UI helpers & notifications
+│   └── assets/                  # Images and graphics
+│
+├── server/                      # Backend API Server
+│   ├── src/
+│   │   ├── config/              # Server configuration and environment setup
+│   │   ├── controllers/         # Request handlers (auth, products, cart, orders)
+│   │   ├── database/            # Connection pool & database migrations (schema/seed)
+│   │   ├── middleware/          # JWT check, db monitor, validation rules, error boundaries
+│   │   ├── routes/              # Modular Express routing tree
+│   │   └── utils/               # Hash generator and security helpers
+│   ├── scripts/                 # Utility scripts (e.g., local database launchers)
+│   ├── uploads/                 # Storage for uploaded product images
+│   ├── .env.example             # Template for local configurations
+│   ├── package.json             # Backend dependencies & run scripts
+│   └── server.js                # Application bootloader
+└── LICENSE                      # Project License
 ```
 
-## Setup
+---
 
-1. Install MySQL and create the database schema:
+## 📊 Database Architecture
 
-   ```bash
-   mysql -u root -p < server/src/database/schema.sql
-   mysql -u root -p ecommerce_store < server/src/database/seed.sql
-   ```
+The relational schema is configured to be simple yet powerful, utilizing JSON capabilities of MySQL:
 
-2. Update the backend environment file:
+```mermaid
+erDiagram
+    USERS ||--o{ ORDERS : places
+    USERS {
+        int id PK
+        string name
+        string email UK
+        string password_hash
+        enum role "user / admin"
+        json cart_json "Active cart snapshot"
+        timestamp created_at
+    }
+    PRODUCTS {
+        int id PK
+        string name
+        text description
+        decimal price
+        string image_url
+        string category
+        int stock
+        timestamp created_at
+    }
+    ORDERS {
+        int id PK
+        int user_id FK
+        json items_json "Ordered products snapshot"
+        decimal total_amount
+        string shipping_address
+        enum status "placed / processing / shipped / delivered"
+        timestamp created_at
+    }
+```
 
-   File: `server/.env`
+### 💡 Notable Design Choices
+* **JSON Cart Columns:** Active user carts are stored as dynamic JSON within the `users` table to eliminate excessive join overhead for frequent add/remove operations.
+* **Order Item Snapshots:** When an order is placed, full product snapshots (including prices and names at the exact time of order) are captured in `items_json` on the `orders` table. This ensures financial audit trails are preserved even if database products are subsequently modified or deleted.
 
-   Set the correct values for:
+---
 
-   - `DB_HOST`
-   - `DB_PORT`
-   - `DB_USER`
-   - `DB_PASSWORD`
-   - `DB_NAME`
-   - `JWT_SECRET`
-   - `FRONTEND_ORIGIN`
+## ⚙️ Quick Start Guide
 
-3. Install backend dependencies:
+### Prerequisites
+* **Node.js** (v18.0.0 or higher recommended)
+* **MySQL** or **MariaDB** server
 
-   ```bash
-   cd server
-   npm install
-   ```
+---
 
-4. Start the server:
+### Step 1: Database Initialization
+Log in to your SQL instance and run the schema and seed scripts to create the database and default records:
 
-   ```bash
-   npm run dev
-   ```
+```bash
+# Import database structure and setup user tables
+mysql -u root -p < server/src/database/schema.sql
 
-5. Open the app in your browser:
+# Import seed data (Default products and accounts)
+mysql -u root -p ecommerce_store < server/src/database/seed.sql
+```
 
-   ```text
-   http://localhost:5000
-   ```
+---
 
-The Express server also serves the static frontend, so you only need to run the backend server for local development.
+### Step 2: Environment Configuration
+Copy the sample environment file and adjust configuration values:
 
-## Demo Credentials
+```bash
+cp server/.env.example server/.env
+```
 
-- Admin
-  - Email: `admin@demostore.com`
-  - Password: `Admin@123`
-- User
-  - Email: `user@demostore.com`
-  - Password: `User@123`
+Open `server/.env` and update configuration with your local database access details:
+```env
+PORT=5000
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=your_mysql_password
+DB_NAME=ecommerce_store
+JWT_SECRET=replace_with_a_long_random_secret
+FRONTEND_ORIGIN=http://localhost:5000
+```
 
-## Database Files
+---
 
-- Schema: `server/src/database/schema.sql`
-- Seed data: `server/src/database/seed.sql`
+### Step 3: Install & Launch Backend
 
-## Main API Routes
+```bash
+# Move into the server folder
+cd server
 
-### Auth
+# Install Node modules
+npm install
 
-- `POST /api/auth/register`
-- `POST /api/auth/login`
+# Run backend development server (includes hot-reloading)
+npm run dev
+```
 
-### Products
+*The Express server automatically hosts the static client. You can now open your browser and navigate to **`http://localhost:5000`** to view and test the application.*
 
-- `GET /api/products`
-- `GET /api/products/:id`
+---
 
-### Cart
+## 🔑 Demo Credentials
 
-- `GET /api/cart`
-- `POST /api/cart/add`
-- `DELETE /api/cart/remove/:id`
+| Role | Email Address | Password |
+| :--- | :--- | :--- |
+| **Standard User** | `user@demostore.com` | `User@123` |
+| **Administrator** | `admin@demostore.com` | `Admin@123` |
 
-### Orders
+---
 
-- `POST /api/orders`
-- `GET /api/orders`
+## 🔌 API Reference Guide
 
-### Admin
+### Authentication
+* `POST /api/auth/register` - Registers a new user.
+* `POST /api/auth/login` - Logs in user, returns access token.
 
-- `POST /api/admin/login`
-- `POST /api/admin/products`
-- `PUT /api/admin/products/:id`
-- `DELETE /api/admin/products/:id`
-- `GET /api/admin/orders`
+### Product Management
+* `GET /api/products` - Returns a list of all products.
+* `GET /api/products/:id` - Returns detailed information for one product.
 
-## Notes
+### Shopping Cart
+* `GET /api/cart` - Returns the user's active cart.
+* `POST /api/cart/add` - Adds a product / updates product quantity in the cart.
+* `DELETE /api/cart/remove/:id` - Removes a specific product from the cart.
 
-- Passwords are hashed with bcrypt before storage.
-- JWT middleware protects cart, orders, and admin routes.
-- MySQL uses a connection pool with `mysql2/promise`.
-- Cart data is stored as JSON on the user record to keep the schema simple.
-- Order items are stored as JSON snapshots so history stays accurate even if product data changes later.
+### Order System
+* `POST /api/orders` - Creates a new order from current cart and clears it.
+* `GET /api/orders` - Lists order history for the authenticated user.
+
+### Administrative Controls
+* `POST /api/admin/login` - Administrator login.
+* `POST /api/admin/products` - Adds a new product (handles image uploads).
+* `PUT /api/admin/products/:id` - Updates details of an existing product.
+* `DELETE /api/admin/products/:id` - Deletes a product from database.
+* `GET /api/admin/orders` - Fetches all customer orders.
+
+---
+
+## 👤 Author & Owner
+
+**Manmath Gonewar**
+* 📧 Email: [manmathgonewar@gmail.com](mailto:manmathgonewar@gmail.com)
+* 💼 GitHub: [@ManmathGonewar](https://github.com/ManmathGonewar)
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
