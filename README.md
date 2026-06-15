@@ -129,6 +129,38 @@ erDiagram
 
 ---
 
+## 🔄 Detailed Workflow (How It Works)
+
+The following sequence describes the end-to-end operational flow when a user interacts with the application:
+
+1. **User Authentication & Session Management**:
+   - The user registers or logs in via the client portal.
+   - The backend validates the details, hashes passwords using **Bcrypt**, and issues a stateless **JSON Web Token (JWT)**.
+   - The client saves this token in local storage and attaches it as an `Authorization: Bearer <token>` header to all subsequent requests via the centralized client [api.js](file:///media/max/New%20Volume/CodeAlpha_EcommerceStore/client/js/api.js).
+
+2. **Browsing Catalog & Fetching Products**:
+   - The browser requests product listings from the Express server.
+   - The backend retrieves the product records using a MySQL pool connection and returns them in clean JSON format.
+   - The frontend's dynamic UI renders the catalogs and filters items on the fly using CSS Flexbox/Grid layouts and vanilla JavaScript modules.
+
+3. **Stateful Shopping Cart Operations**:
+   - When a user adds an item to their cart, a request is dispatched to the backend.
+   - Instead of managing state solely on the client side or using complex relational join queries, the backend updates a centralized `cart_json` column directly within the `users` table. This provides cross-device persistence with low read-write overhead.
+
+4. **Secure Checkout & Order Placement**:
+   - The user submits their shipping address on the checkout screen.
+   - The backend server processes the order inside a MySQL transaction:
+     - It fetches current prices directly from the database to prevent client-side price manipulation.
+     - It verifies if the requested product quantities are available in stock.
+     - It serializes a snapshot of the cart's items, prices, and descriptions into a `items_json` column in the `orders` table (preserving audit integrity even if items are modified/deleted later).
+     - It decrements product inventory, flushes the user's `cart_json` in the database, and stores the completed order record.
+
+5. **Administrative Controls**:
+   - Authorized administrators access a separate dashboard protected by JWT role-based security (`admin` role check).
+   - Admins can perform full CRUD operations on products (with file upload middleware managing product images) and monitor order statuses in real-time.
+
+---
+
 ## ⚙️ Quick Start Guide
 
 ### Prerequisites
@@ -233,6 +265,15 @@ npm run dev
 
 ---
 
-## 📄 License
+## ⚖️ License & Academic Usage Disclaimer
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+### 🎓 Academic & Internship Use
+* **Purpose:** Developed as a project showcase for a software development internship at **CodeAlpha**.
+* **Educational Use:** Highly recommended for college projects, university submissions, portfolios, or learning Full-Stack JavaScript development (HTML/CSS/JS + Node.js + Express + MySQL).
+* **Commercial Disclaimer:** While the MIT License permits commercial reuse and customization, this codebase was built primarily as a demonstration of skills. If you choose to adapt it for commercial businesses or production-grade products, we highly recommend:
+  - Performing thorough load testing.
+  - Adding API rate-limiting (e.g., using `express-rate-limit`).
+  - Employing external secure media storage hosting (e.g., AWS S3 or Cloudinary) rather than hosting file uploads on the local server filesystem.
+  - Moving database credentials and JWT secret keys out of code repositories and into secure vault environments.
