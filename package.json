@@ -1,0 +1,9 @@
+{
+  "name": "codealpha-store-root",
+  "version": "1.0.0",
+  "description": "Root package for CodeAlpha E-commerce Store to facilitate deployment",
+  "scripts": {
+    "build": "npm install --prefix server",
+    "start": "npm start --prefix server"
+  }
+}
