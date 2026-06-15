@@ -8,7 +8,7 @@ export const env = {
   dbPort: Number(process.env.DB_PORT || 3306),
   dbSocket: process.env.DB_SOCKET || '',
   dbUser: process.env.DB_USER || 'root',
-  dbPassword: process.env.DB_PASSWORD || '',
+  dbPassword: process.env.DB_PASSWORD || process.env.DB_PASS || '',
   dbName: process.env.DB_NAME || 'ecommerce_store',
   dbReconnectIntervalMs: Number(process.env.DB_RECONNECT_INTERVAL_MS || 15000),
   jwtSecret: process.env.JWT_SECRET || 'change_this_secret_before_production',
